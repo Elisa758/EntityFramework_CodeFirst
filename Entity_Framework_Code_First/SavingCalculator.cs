@@ -11,28 +11,28 @@ namespace EntityFramework_WindowsFrom
         public static double CalculateTotalSaved(DateTime begin, DateTime end, List<SavingAccount> sa)
         {
             double newAmount = 0;
-            double totalInterest = 0;
-            int counter = 0;
+            double newAmountY = 0;
+            double totalInterestM = 0;
+            double totalInterestY = 0;
+
+            int counterMonth = 0;
+            int counterYears = 0;
+
             double totalAmount = 0;
             DateTime date = begin;
-            double nbYear = Convert.ToInt32((end - begin).TotalDays / 365);
 
 
-            //Console.WriteLine(date);
-            foreach (SavingAccount item in sa)
+            while (begin <= date && date <= end)
             {
-                totalAmount = totalAmount + (item.Amount + (item.Amount * item.Interest * nbYear));
-                if (item.Interest == 1)
+                foreach (SavingAccount item in sa)
                 {
-
+                        newAmount = item.Amount;
+                        newAmount += (item.Amount * item.Interest);
                 }
-                else if (item.Interest == 12)
-                {
-
-                }
-                totalAmount=newAmount   
+                date = date.AddMonths(1);
             }
-            return totalAmount;
+            
+            return newAmount;
             
 
 

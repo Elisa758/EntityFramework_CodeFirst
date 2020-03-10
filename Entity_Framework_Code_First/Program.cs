@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace Entity_Framework_Code_First
+namespace EntityFramework_WindowsFrom
 {
     class Program
     {
