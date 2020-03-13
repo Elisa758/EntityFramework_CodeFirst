@@ -11,14 +11,8 @@ namespace EntityFramework_WindowsFrom
         public static double CalculateTotalSaved(DateTime begin, DateTime end, List<SavingAccount> sa)
         {
             double newAmount = 0;
-            double newAmountY = 0;
-            double totalInterestM = 0;
-            double totalInterestY = 0;
 
-            int counterMonth = 0;
-            int counterYears = 0;
-
-            double totalAmount = 0;
+            int nbYear = Convert.ToInt32((end - begin).TotalDays / 365);
             DateTime date = begin;
 
 
@@ -27,7 +21,7 @@ namespace EntityFramework_WindowsFrom
                 foreach (SavingAccount item in sa)
                 {
                         newAmount = item.Amount;
-                        newAmount += (item.Amount * item.Interest);
+                        newAmount += ((item.Amount * item.Interest)* nbYear);
                 }
                 date = date.AddMonths(1);
             }
